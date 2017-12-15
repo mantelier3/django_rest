@@ -3,7 +3,7 @@ from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
 
 
-class SnippetList(generics.ListCreateView):
+class SnippetList(generics.ListCreateAPIView):
     """
     List all code snippets, or create a new snippet
     """
