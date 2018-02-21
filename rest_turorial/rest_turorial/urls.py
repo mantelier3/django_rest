@@ -13,11 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
-from django.conf.urls import include
+# from django.contrib import admin
+# from django.urls import path
+from django.conf.urls import include, url
+from rest_framework.schemas import get_schema_view
+
+
+schema_view = get_schema_view(title='Pastebin API')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('snippets.urls')),
+    url(r'^', include('snippets.urls')),
+    url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^schema/$', schema_view)
 ]
